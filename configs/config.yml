@@ -1,0 +1,3 @@
+port: "8000"
+db:
+  dbname: "main-DB"
