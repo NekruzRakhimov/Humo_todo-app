@@ -1,12 +1,12 @@
 package repository
 
 import (
+	"Humo_todo-app/models"
 	"github.com/jmoiron/sqlx"
-	"todo-app/models"
 )
 
 type Authorization interface {
-	CreateUser(user models.User)  (int64, error)
+	CreateUser(user models.User) (int64, error)
 	GetUser(username, password string) (models.User, error)
 }
 
@@ -35,7 +35,7 @@ type Repository struct {
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Authorization: NewAuthSqlite(db),
-		TodoList: NewTodoListSqlite(db),
-		TodoItem: NewTodoItemSqlite(db),
+		TodoList:      NewTodoListSqlite(db),
+		TodoItem:      NewTodoItemSqlite(db),
 	}
 }

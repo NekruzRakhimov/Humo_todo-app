@@ -1,9 +1,9 @@
 package handler
 
 import (
+	"Humo_todo-app/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"todo-app/models"
 )
 
 func (h *Handler) signUp(c *gin.Context) {
@@ -19,7 +19,7 @@ func (h *Handler) signUp(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, map[string]interface{}{
-		"id" : id,
+		"id": id,
 	})
 }
 
@@ -36,7 +36,6 @@ func (h *Handler) signIn(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, map[string]interface{}{
-		"token" : token,
+		"token": token,
 	})
 }
-

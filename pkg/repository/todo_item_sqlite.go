@@ -1,9 +1,9 @@
 package repository
 
 import (
+	"Humo_todo-app/models"
 	"fmt"
 	"github.com/jmoiron/sqlx"
-	"todo-app/models"
 )
 
 type TodoItemSqlite struct {

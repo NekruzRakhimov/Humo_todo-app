@@ -1,10 +1,10 @@
 package handler
 
 import (
+	"Humo_todo-app/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
-	"todo-app/models"
 )
 
 func (h *Handler) createList(c *gin.Context) {
@@ -26,7 +26,7 @@ func (h *Handler) createList(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, map[string]interface{}{
-		"id" : id,
+		"id": id,
 	})
 }
 

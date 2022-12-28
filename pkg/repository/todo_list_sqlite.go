@@ -1,9 +1,9 @@
 package repository
 
 import (
+	"Humo_todo-app/models"
 	"fmt"
 	"github.com/jmoiron/sqlx"
-	"todo-app/models"
 )
 
 type TodoListSqlite struct {
@@ -78,7 +78,7 @@ func (r *TodoListSqlite) Delete(userId, listId int64) error {
 	return tx.Commit()
 }
 
-func (r *TodoListSqlite) Update(userId int64, ListId int64, input models.UpdateListData) error{
+func (r *TodoListSqlite) Update(userId int64, ListId int64, input models.UpdateListData) error {
 	if input.Title == nil {
 		query := fmt.Sprintf("UPDATE %s SET description=$1 WHERE id=$2", todoListsTable)
 		_, err := r.db.Exec(query, input.Description, ListId)

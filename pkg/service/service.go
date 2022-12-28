@@ -1,8 +1,8 @@
 package service
 
 import (
-	"todo-app/models"
-	"todo-app/pkg/repository"
+	"Humo_todo-app/models"
+	"Humo_todo-app/pkg/repository"
 )
 
 type Authorization interface {
@@ -36,7 +36,7 @@ type Service struct {
 func NewService(repos *repository.Repository) *Service {
 	return &Service{
 		Authorization: NewAuthService(repos.Authorization),
-		TodoList: NewTodoListService(repos.TodoList),
-		TodoItem: NewTodoItemService(repos.TodoItem, repos.TodoList),
+		TodoList:      NewTodoListService(repos.TodoList),
+		TodoItem:      NewTodoItemService(repos.TodoItem, repos.TodoList),
 	}
 }

@@ -1,13 +1,13 @@
 package service
 
 import (
+	"Humo_todo-app/models"
+	"Humo_todo-app/pkg/repository"
 	"crypto/sha1"
 	"errors"
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"time"
-	"todo-app/models"
-	"todo-app/pkg/repository"
 )
 
 const (
@@ -41,11 +41,11 @@ func (s *AuthService) GenerateToken(username, password string) (string, error) {
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, &tokenClaims{
 		jwt.StandardClaims{
-		ExpiresAt: time.Now().Add(tokenTTL).Unix(),
-		IssuedAt:  time.Now().Unix(),
-		Issuer:    "Server",
-	},
-	user.Id,
+			ExpiresAt: time.Now().Add(tokenTTL).Unix(),
+			IssuedAt:  time.Now().Unix(),
+			Issuer:    "Server",
+		},
+		user.Id,
 	})
 
 	return token.SignedString([]byte(signingKey))

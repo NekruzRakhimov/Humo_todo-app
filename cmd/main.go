@@ -1,6 +1,11 @@
 package main
 
 import (
+	todoapp "Humo_todo-app"
+	"Humo_todo-app/db"
+	"Humo_todo-app/pkg/handler"
+	"Humo_todo-app/pkg/repository"
+	"Humo_todo-app/pkg/service"
 	"context"
 	"fmt"
 	"github.com/spf13/viper"
@@ -8,14 +13,9 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	todoapp "todo-app"
-	"todo-app/db"
-	"todo-app/pkg/handler"
-	"todo-app/pkg/repository"
-	"todo-app/pkg/service"
 )
 
-func Start()  {
+func Start() {
 	/***************** Инициализация config-ов *****************/
 	if err := initConfigs(); err != nil {
 		log.Fatalf("Error while initializing configs. Error is: %s", err.Error())
@@ -47,12 +47,12 @@ func Start()  {
 	fmt.Printf("Server is listening port: %s\n", viper.GetString("port"))
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
-	<- quit
+	<-quit
 	/**********************************************************/
 
 	/***************** Shutting App Down *****************/
 	fmt.Println("TodoApp Shutting Down")
-	if err := MainServer.Shutdown(context.Background()); err != nil  {
+	if err := MainServer.Shutdown(context.Background()); err != nil {
 		log.Fatalf("error while shutting server down. Error is: %s", err.Error())
 	}
 	if err := database.Close(); err != nil {
@@ -68,6 +68,6 @@ func main() {
 //Функция инициализации config-ов
 func initConfigs() error {
 	viper.AddConfigPath("configs") //адрес директории
-	viper.SetConfigName("config") //имя файла
-	return viper.ReadInConfig() //считывает config и сохраняет данные во внутренний объект viper
+	viper.SetConfigName("config")  //имя файла
+	return viper.ReadInConfig()    //считывает config и сохраняет данные во внутренний объект viper
 }

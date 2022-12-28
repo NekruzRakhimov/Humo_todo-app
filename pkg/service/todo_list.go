@@ -1,8 +1,8 @@
 package service
 
 import (
-	"todo-app/models"
-	"todo-app/pkg/repository"
+	"Humo_todo-app/models"
+	"Humo_todo-app/pkg/repository"
 )
 
 type TodoListService struct {
@@ -29,7 +29,7 @@ func (s *TodoListService) Delete(userId, listId int64) error {
 	return s.repo.Delete(userId, listId)
 }
 
-func (s *TodoListService) Update(userId int64, ListId int64, input models.UpdateListData) error{
+func (s *TodoListService) Update(userId int64, ListId int64, input models.UpdateListData) error {
 	if err := input.Validate(); err != nil {
 		return err
 	}

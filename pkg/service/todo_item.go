@@ -1,12 +1,12 @@
 package service
 
 import (
-	"todo-app/models"
-	"todo-app/pkg/repository"
+	"Humo_todo-app/models"
+	"Humo_todo-app/pkg/repository"
 )
 
 type TodoItemService struct {
-	repo repository.TodoItem
+	repo     repository.TodoItem
 	listRepo repository.TodoList
 }
 

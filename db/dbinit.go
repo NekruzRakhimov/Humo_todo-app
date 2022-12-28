@@ -4,9 +4,10 @@ import (
 	"github.com/jmoiron/sqlx"
 	"log"
 )
-//Initializing tables
+
+// Init Initializing tables
 func Init(database *sqlx.DB) {
-	DDLs := []string {
+	DDLs := []string{
 		CreateUsersTable,
 		CreateTodoListsTable,
 		CreateUsersListsTable,
@@ -24,7 +25,7 @@ func Init(database *sqlx.DB) {
 
 //Dropping tables
 func Drop(database *sqlx.DB) {
-	DDLs := []string {
+	DDLs := []string{
 		DropListsItemsTable,
 		DropUsersListsTable,
 		DropTodoListsTable,
@@ -39,5 +40,3 @@ func Drop(database *sqlx.DB) {
 		}
 	}
 }
-
-

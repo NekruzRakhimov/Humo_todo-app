@@ -1,9 +1,9 @@
 package repository
 
 import (
+	"Humo_todo-app/models"
 	"fmt"
 	"github.com/jmoiron/sqlx"
-	"todo-app/models"
 )
 
 type AuthSqlite struct {
@@ -27,7 +27,6 @@ func (r *AuthSqlite) CreateUser(user models.User) (int64, error) {
 func (r *AuthSqlite) GetUser(username, password string) (models.User, error) {
 	var user models.User
 
-
 	query := fmt.Sprintf("SELECT * FROM %s WHERE username=($1) AND password_hash=($2)", usersTable)
 	err := r.db.QueryRow(query, username, password).Scan(
 		&user.Id,
@@ -37,4 +36,3 @@ func (r *AuthSqlite) GetUser(username, password string) (models.User, error) {
 	)
 	return user, err
 }
-
